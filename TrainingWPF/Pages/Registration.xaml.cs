@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure.Pluralization;
 using System.Linq;
@@ -78,12 +77,12 @@ namespace TrainingWPF
                 /// </summary>
                 /// 
                 if (users.Where(x => x.Login.ToString() == tbLogin.Text).Count() == 0)
-                   if (!tbName.Text.Contains(" ")
-                    && !tbSurname.Text.Contains(" ")
-                    && !tbPatronymic.Text.Contains(" ")
-                    && !tbLogin.Text.Contains(" ")
-                    && !tbPassword.Password.Contains(" ")
-                    && !tbPassword2.Password.Contains(" "))
+                    if (!tbName.Text.Contains(" ")
+                     && !tbSurname.Text.Contains(" ")
+                     && !tbPatronymic.Text.Contains(" ")
+                     && !tbLogin.Text.Contains(" ")
+                     && !tbPassword.Password.Contains(" ")
+                     && !tbPassword2.Password.Contains(" "))
                     {
                         //if(Regex.IsMatch(tbPassword.Password, ) && tbPassword2.Password)
 
@@ -95,7 +94,7 @@ namespace TrainingWPF
                                 {
                                     if (Regex.IsMatch(tbPassword.Password, @"\W"))
                                     {
-                                       
+
                                         if (Regex.IsMatch(tbPassword.Password, @"(?=.*[^\w\s]).{8,}"))
                                         {
 
@@ -128,7 +127,7 @@ namespace TrainingWPF
                                             {
                                                 MessageBox.Show("Пароли не совпадают", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                                             }
-                                           
+
 
 
                                         }
@@ -198,12 +197,46 @@ namespace TrainingWPF
         {
             NavigationService.GoBack();
         }
-
-        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        private void checkPassword_Checked(object sender, RoutedEventArgs e)
         {
-           
+            if (checkPassword.IsChecked == true)
+            {
+                tbPasswordTB.Text = tbPassword.Password;
+                tbPasswordTB.Visibility = Visibility.Visible;
+                tbPassword.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void checkPassword_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (checkPassword.IsChecked == false)
+            {
+                tbPassword.Password = tbPasswordTB.Text;
+                tbPasswordTB.Visibility = Visibility.Collapsed;
+                tbPassword.Visibility = Visibility.Visible;
+            }
+        }
+
+
+
+        private void checkPassword2_Checked_1(object sender, RoutedEventArgs e)
+        {
+            if (checkPassword2.IsChecked == true)
+            {
+                tbPasswordTB1.Text = tbPassword2.Password;
+                tbPasswordTB1.Visibility = Visibility.Visible;
+                tbPassword2.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void checkPassword2_Unchecked_1(object sender, RoutedEventArgs e)
+        {
+            if (checkPassword2.IsChecked == false)
+            {
+                tbPassword2.Password = tbPasswordTB1.Text;
+                tbPasswordTB1.Visibility = Visibility.Collapsed;
+                tbPassword2.Visibility = Visibility.Visible;
+            }
         }
     }
 }
-
-

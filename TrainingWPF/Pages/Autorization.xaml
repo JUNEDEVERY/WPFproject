@@ -9,33 +9,37 @@
       Background="white"
       Title="Autorization">
 
-    <Grid Background="#2d2e30">
-        <StackPanel Grid.Row="1">
-            <TextBlock   HorizontalAlignment="Center">Страница для авторизации</TextBlock>
+    <Grid Background="#f5d2aa">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel  Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 108 0 0">
 
-            <StackPanel>
-
-                <GroupBox  Header="Логин">
-                    <TextBox Name="tblog"></TextBox>
+            <GroupBox Style="{StaticResource gpText}" Width="150" Header="Логин" Margin="0 0 60 0">
+                    <TextBox Text="gerasimov" Name="tblog"></TextBox>
                 </GroupBox>
 
-                <GroupBox  Header="Введите пароль">
-                    <PasswordBox Name="tbpass"></PasswordBox>
-                    
+            <GroupBox  Style="{StaticResource gpText}" Width="150" Header="Введите пароль">
+                    <PasswordBox Password="22!Aaaaa" Name="tbpass"></PasswordBox>
+
                 </GroupBox>
 
-
-                <StackPanel>
-                    <Button Name="btnAuth" Click="btnAuth_Click" Content="Авторизация"></Button>
-                    <Button Name="btngoBack" Click="btngoBack_Click" Content="Назад"></Button>
-
-                </StackPanel>
-               
-
-            </StackPanel>
-         
             
+              
+        
+
+           
         </StackPanel>
-    
+        <StackPanel  Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical" Margin="0 50 0 0">
+            <Button Margin="0 0 0 10" Template="{StaticResource btnTemp}" Name="btnAuth" Click="btnAuth_Click" Content="Авторизация" ></Button>
+            <Button Template="{StaticResource btnTemp}" Name="btngoBack" Click="btngoBack_Click" Content="Назад"></Button>
+
+        </StackPanel>
+        
+        
+        
+
     </Grid>
 </Page>

@@ -20,11 +20,11 @@ namespace TrainingWPF
     /// Логика взаимодействия для MainPage.xaml
     /// </summary>
     /// 
-    public partial class AdminPage : Page
+    public partial class FirstPage : Page
     {
         List<Role> RT = DataBase.tbE.Role.ToList();
 
-        public AdminPage()
+        public FirstPage()
         {
             InitializeComponent();
             //tbAdmin.Text = RT[0].roleName;
@@ -38,7 +38,7 @@ namespace TrainingWPF
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
             FrameWork.MainFrame.Navigate(new Registration());
-         
+
         }
     }
 }

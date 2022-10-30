@@ -5,16 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrainingWPF"
         mc:Ignorable="d"
-        
-        Title="MainWindow" Height="450" Width="800">
+        ResizeMode="NoResize"
+        Title="Cuscatlan" Height="450" Width="800" Icon="/Resources/clipart2680273.png" WindowStartupLocation="CenterScreen">
 
     <Grid>
-        <Grid.RowDefinitions>
-
-        </Grid.RowDefinitions>
-        <Grid.Background>
-            <ImageBrush Opacity="0.3" TileMode="Tile" ImageSource="/Resources/MainBackground.jpg"/>
-        </Grid.Background>
         <StackPanel HorizontalAlignment="Center" Grid.Row="0" Width="0"/>
 
         <Frame x:Name="fMain" Navigated="fMain_Navigated" NavigationUIVisibility="Hidden" Height="494" VerticalAlignment="Top" Source="Pages"/>

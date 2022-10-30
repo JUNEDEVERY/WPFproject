@@ -31,7 +31,7 @@ namespace TrainingWPF
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            FrameWork.MainFrame.Navigate(new AdminPage());
+            FrameWork.MainFrame.Navigate(new FirstPage());
         }
 
         private void btnAuth_Click(object sender, RoutedEventArgs e)
@@ -39,6 +39,7 @@ namespace TrainingWPF
 
             string p = Convert.ToString(tbpass.Password.GetHashCode());
             Users users = DataBase.tbE.Users.FirstOrDefault(x => x.Login == tblog.Text && x.Password ==p);
+
             if(users != null)
             {
                 if(users.idRole == 1)
@@ -48,17 +49,22 @@ namespace TrainingWPF
                 }
                 else
                 {
-                    MessageBox.Show("Приветик, друг");
+                    MessageBox.Show($"Привет, {users.Login}!", "Успешная авторизация", MessageBoxButton.OK, MessageBoxImage.Information); ;
                     NavigationService.Navigate(new ShowMenu());
                 }
                
+            }
+            else
+            {
+                MessageBox.Show($"Введенный логин и/или пароль не существуют в системе", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Error); ;
+
             }
 
         }
 
         private void btngoBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AdminPage());
+            NavigationService.Navigate(new FirstPage());
         }
     }
 }

@@ -27,7 +27,7 @@ namespace TrainingWPF
            
             DataBase.tbE = new Entities1();
             FrameWork.MainFrame = fMain;
-            FrameWork.MainFrame.Navigate(new AdminPage());
+            FrameWork.MainFrame.Navigate(new FirstPage());
         }
 
       

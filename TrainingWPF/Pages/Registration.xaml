@@ -5,38 +5,54 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TrainingWPF"
       mc:Ignorable="d" 
+      Background="#f5d2aa"
       d:DesignHeight="450" d:DesignWidth="800"
-      Background="White"
-      Title="Registration">
+       Title="Registration">
+    <!--<Page.Background >
+        <ImageBrush  ImageSource="/Resources/background.png" />
 
-    <Grid>
+    </Page.Background>-->
+    <Grid  HorizontalAlignment="Center">
+       
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-
-        <StackPanel >
-
-            <TextBlock>Страница регистрации</TextBlock>
-            <GroupBox  Header="Введите имя">
-                <TextBox Name="tbName" />
-            </GroupBox>
-
-            <GroupBox Header="Введите фамилию" Grid.Row="0">
+        <StackPanel>
+            <GroupBox Style="{StaticResource gpText}" Header="Введите фамилию" Grid.Row="0">
                 <TextBox Name="tbSurname"></TextBox>
             </GroupBox>
-
-            <GroupBox Header="Введите отчество">
+            <GroupBox Style="{StaticResource gpText}" Header="Введите имя">
+                <TextBox Name="tbName" />
+            </GroupBox>
+            <GroupBox Style="{StaticResource gpText}" Header="Введите отчество">
                 <TextBox Name="tbPatronymic"></TextBox>
             </GroupBox>
-            <GroupBox Header="Введите логин">
+            <GroupBox Style="{StaticResource gpText}" Header="Введите логин">
                 <TextBox Name="tbLogin"></TextBox>
             </GroupBox>
 
 
-            <GroupBox Header="Введите пароль" >
-                
+            <GroupBox Style="{StaticResource gpText}" Header="Введите пароль" >
+
                 <StackPanel Orientation="Horizontal">
-                    <PasswordBox Name="tbPassword" Height="20" Width="150" >
+                    <TextBox Name="tbPasswordTB" Height="20" Width="200" Visibility="Collapsed" >
+
+                        <TextBox.ToolTip>
+
+                            <TextBlock >
+                                Требования к паролю:
+                                  <LineBreak />   
+
+                                1.Не менее 1 заглавного латинского символа, не менее 3 строчных латинских символов
+                                 <LineBreak /> 
+                                2.Не менее 2 цифры и не менее 1 спец. символа. 
+                                 <LineBreak /> 
+                                3.Общая длина пароля не менее 8 символов
+
+                            </TextBlock>
+                        </TextBox.ToolTip>
+                    </TextBox>
+                    <PasswordBox Name="tbPassword" Height="20" Width="200" >
 
                         <PasswordBox.ToolTip>
 
@@ -53,49 +69,85 @@
                             </TextBlock>
                         </PasswordBox.ToolTip>
                     </PasswordBox>
-                    <Image MouseDown="Image_MouseDown" Height="30" Width="30" Source="/Resources/viewPswrd.png"/>
-
+                    <CheckBox x:Name="checkPassword" Checked="checkPassword_Checked" Unchecked="checkPassword_Unchecked" VerticalAlignment="Center"/>
                 </StackPanel>
             </GroupBox>
-           
 
-            <GroupBox Header="Повторно введите праоль">
-                <PasswordBox Name="tbPassword2">
-                </PasswordBox>
+
+            <GroupBox Style="{StaticResource gpText}"  Header="Повторно введите пароль" >
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="tbPasswordTB1" Height="20" Width="200" Visibility="Collapsed" >
+
+                        <TextBox.ToolTip>
+
+                            <TextBlock >
+                                Требования к паролю:
+                                  <LineBreak />   
+
+                                1.Не менее 1 заглавного латинского символа, не менее 3 строчных латинских символов
+                                 <LineBreak /> 
+                                2.Не менее 2 цифры и не менее 1 спец. символа. 
+                                 <LineBreak /> 
+                                3.Общая длина пароля не менее 8 символов
+
+                            </TextBlock>
+                        </TextBox.ToolTip>
+                    </TextBox>
+                    <PasswordBox Name="tbPassword2" Height="20" Width="200" >
+                        <PasswordBox.ToolTip>
+                            <TextBlock >
+                                Требования к паролю:
+                                  <LineBreak />   
+                                1.Не менее 1 заглавного латинского символа, не менее 3 строчных латинских символов
+                                 <LineBreak /> 
+                                2.Не менее 2 цифры и не менее 1 спец. символа. 
+                                 <LineBreak /> 
+                                3.Общая длина пароля не менее 8 символов
+
+                            </TextBlock>
+                        </PasswordBox.ToolTip>
+                    </PasswordBox>
+                    <CheckBox x:Name="checkPassword2" Checked="checkPassword2_Checked_1" Unchecked="checkPassword2_Unchecked_1" VerticalAlignment="Center" Margin="0 0 0 0"/>
+                </StackPanel>
             </GroupBox>
+            <StackPanel Orientation="Horizontal">
+                <GroupBox Style="{StaticResource gpText}" Header="Выберите страну">
+                    <ComboBox Name="cmb"/>
+                </GroupBox>
 
+                <GroupBox Style="{StaticResource gpText}" Header="Выберите город">
+                    <ComboBox Name="cmb2"/>
+                </GroupBox>
 
-            <GroupBox Header="Выберите страну">
-                <ComboBox Name="cmb"/>
-            </GroupBox>
-
-            <GroupBox Header="Выберите город">
-                <ComboBox Name="cmb2"/>
-            </GroupBox>
-
-
-            <StackPanel Margin="6 0 0 2">
-
-                <RadioButton Name="rb1">Мужской</RadioButton>
-                <RadioButton Name="rb2">Женский</RadioButton>
 
             </StackPanel>
-             
-          
-              
-               
-          
+        
 
 
-            <StackPanel>
+            <StackPanel HorizontalAlignment="Center" Margin="6 4 0 2" Orientation="Horizontal">
+
+                <RadioButton Style="{StaticResource rbHeader}" Margin="-19 0 60 0" Name="rb1">Мужской</RadioButton>
+                <RadioButton Style="{StaticResource rbHeader}" Name="rb2">Женский</RadioButton>
 
             </StackPanel>
-            <Button Name="btnReg" Click="btnReg_Click" Content="Зарегистрироваться"/>
-            <Button Name="btnBack" Click="btnBack_Click" Content="Назад"/>
+
+
+
+
+
+
+
+            <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+                <Button Margin="0 15 0 10" Template="{StaticResource btnTemp}" Name="btnReg" Click="btnReg_Click" Content="Зарегистрироваться"/>
+                <Button Template="{StaticResource btnTemp}" Name="btnBack" Click="btnBack_Click" Content="Назад"/>
+            </StackPanel>
           
+
 
 
         </StackPanel>
-
+       
     </Grid>
+
 </Page>
