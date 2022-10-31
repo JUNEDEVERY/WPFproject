@@ -33,7 +33,7 @@
         <ControlTemplate TargetType="Button" x:Key="btnTemp">
             <Border x:Name="btnBorder" CornerRadius="5" BorderThickness="2.5" BorderBrush="Black" Background="#f2865b" Padding="5" HorizontalAlignment="Center"
                     VerticalAlignment="Center" MinWidth="104" Cursor="Hand">
-                <ContentControl x:Name="bntControl" Content="{TemplateBinding Content}" FontFamily="Zekton Rg" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ContentControl x:Name="btnControl" Content="{TemplateBinding Content}" FontFamily="Zekton Rg" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
             
             <ControlTemplate.Triggers>
