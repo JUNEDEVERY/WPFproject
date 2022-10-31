@@ -24,13 +24,13 @@ namespace TrainingWPF
         public MainWindow()
         {
             InitializeComponent();
-           
-            DataBase.tbE = new Entities1();
+
+            DataBase.tbE = new Entities22();
             FrameWork.MainFrame = fMain;
             FrameWork.MainFrame.Navigate(new FirstPage());
         }
 
-      
+
 
         private void fMain_Navigated(object sender, NavigationEventArgs e)
         {
@@ -39,9 +39,9 @@ namespace TrainingWPF
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-          
+
         }
 
-       
+
     }
 }

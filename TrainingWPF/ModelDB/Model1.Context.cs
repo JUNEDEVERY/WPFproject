@@ -13,10 +13,10 @@ namespace TrainingWPF.ModelDB
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities1 : DbContext
+    public partial class Entities22 : DbContext
     {
-        public Entities1()
-            : base("name=Entities1")
+        public Entities22()
+            : base("name=Entities22")
         {
         }
     

@@ -10,7 +10,7 @@ namespace TrainingWPF
     internal class FrameWork
     {
         public static Frame MainFrame;
-     
+
 
     }
 }

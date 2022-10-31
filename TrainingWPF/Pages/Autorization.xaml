@@ -18,28 +18,28 @@
         <StackPanel  Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 108 0 0">
 
             <GroupBox Style="{StaticResource gpText}" Width="150" Header="Логин" Margin="0 0 60 0">
-                    <TextBox Text="gerasimov" Name="tblog"></TextBox>
-                </GroupBox>
+                <TextBox MaxLength="20" Text="gerasimov" Name="tblog"></TextBox>
+            </GroupBox>
 
             <GroupBox  Style="{StaticResource gpText}" Width="150" Header="Введите пароль">
-                    <PasswordBox Password="22!Aaaaa" Name="tbpass"></PasswordBox>
+                <PasswordBox MaxLength="30"  Password="22!Aaaaa" Name="tbpass"></PasswordBox>
 
-                </GroupBox>
+            </GroupBox>
 
-            
-              
-        
 
-           
+
+
+
+
         </StackPanel>
         <StackPanel  Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical" Margin="0 50 0 0">
             <Button Margin="0 0 0 10" Template="{StaticResource btnTemp}" Name="btnAuth" Click="btnAuth_Click" Content="Авторизация" ></Button>
             <Button Template="{StaticResource btnTemp}" Name="btngoBack" Click="btngoBack_Click" Content="Назад"></Button>
 
         </StackPanel>
-        
-        
-        
+
+
+
 
     </Grid>
 </Page>

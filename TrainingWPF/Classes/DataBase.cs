@@ -10,6 +10,6 @@ namespace TrainingWPF
     internal class DataBase
     {
 
-        public static Entities1 tbE;
+        public static Entities22 tbE;
     }
 }

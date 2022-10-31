@@ -22,7 +22,7 @@ namespace TrainingWPF
     /// 
     public partial class FirstPage : Page
     {
-        List<Role> RT = DataBase.tbE.Role.ToList();
+        //List<Role> RT = DataBase.tbE.Role.ToList();
 
         public FirstPage()
         {

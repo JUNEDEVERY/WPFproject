@@ -25,8 +25,8 @@ namespace TrainingWPF
         public Autorization()
         {
             InitializeComponent();
-            DataBase.tbE = new Entities1();
-           
+            DataBase.tbE = new Entities22();
+
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -38,11 +38,11 @@ namespace TrainingWPF
         {
 
             string p = Convert.ToString(tbpass.Password.GetHashCode());
-            Users users = DataBase.tbE.Users.FirstOrDefault(x => x.Login == tblog.Text && x.Password ==p);
+            Users users = DataBase.tbE.Users.FirstOrDefault(x => x.Login == tblog.Text && x.Password == p);
 
-            if(users != null)
+            if (users != null)
             {
-                if(users.idRole == 1)
+                if (users.idRole == 1)
                 {
                     // admin - gerasimov 22!Aaaaa
                     NavigationService.Navigate(new AdminPage2());
@@ -52,7 +52,7 @@ namespace TrainingWPF
                     MessageBox.Show($"Привет, {users.Login}!", "Успешная авторизация", MessageBoxButton.OK, MessageBoxImage.Information); ;
                     NavigationService.Navigate(new ShowMenu());
                 }
-               
+
             }
             else
             {

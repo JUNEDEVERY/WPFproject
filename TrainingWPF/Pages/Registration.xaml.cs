@@ -34,7 +34,7 @@ namespace TrainingWPF
         {
 
             InitializeComponent();
-            DataBase.tbE = new Entities1();
+            DataBase.tbE = new Entities22();
             cmb2.ItemsSource = cityList;
             cmb2.SelectedValuePath = "idCity";
             cmb2.DisplayMemberPath = "nameCity";
@@ -55,140 +55,164 @@ namespace TrainingWPF
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
 
-            int genderList = 0;
-            if (rb1.IsChecked == true) { genderList = 1; }
-            else if (rb2.IsChecked == true) { genderList = 2; }
+            try
+            {
+                if (checkPassword.IsChecked == true)
+                {
+                    tbPassword.Password = tbPasswordTB.Text;
+                }
+                if (checkPassword.IsChecked == false)
+                {
+                    tbPasswordTB.Text = tbPassword.Password;
+                }
+                if (checkPassword2.IsChecked == true)
+                {
+                    tbPassword2.Password = tbPasswordTB1.Text;
+                }
+                if (checkPassword2.IsChecked == false)
+                {
+                    tbPasswordTB1.Text = tbPassword2.Password;
+                }
 
-            /// <summary>
-            /// Проверка на заполненнсть
-            /// </summary>
-            if (!String.IsNullOrEmpty(tbName.Text)
-                && !String.IsNullOrEmpty(tbSurname.Text)
-                && !String.IsNullOrEmpty(tbPatronymic.Text)
-                && !String.IsNullOrEmpty(tbLogin.Text)
-                && !String.IsNullOrEmpty(tbPassword.Password)
-                && !String.IsNullOrEmpty(tbPassword2.Password)
-                && (cmb.SelectedItem != null)
-                && (cmb2.SelectedItem != null)
-                && (rb1.IsChecked == true || rb2.IsChecked == true))
+                int genderList = 0;
+                if (rb1.IsChecked == true) { genderList = 1; }
+                else if (rb2.IsChecked == true) { genderList = 2; }
 
                 /// <summary>
-                /// Проверка на пробелы
+                /// Проверка на заполненнсть
                 /// </summary>
-                /// 
-                if (users.Where(x => x.Login.ToString() == tbLogin.Text).Count() == 0)
-                    if (!tbName.Text.Contains(" ")
-                     && !tbSurname.Text.Contains(" ")
-                     && !tbPatronymic.Text.Contains(" ")
-                     && !tbLogin.Text.Contains(" ")
-                     && !tbPassword.Password.Contains(" ")
-                     && !tbPassword2.Password.Contains(" "))
-                    {
-                        //if(Regex.IsMatch(tbPassword.Password, ) && tbPassword2.Password)
+                if (!String.IsNullOrEmpty(tbName.Text)
+                    && !String.IsNullOrEmpty(tbSurname.Text)
+                    && !String.IsNullOrEmpty(tbPatronymic.Text)
+                    && !String.IsNullOrEmpty(tbLogin.Text)
+                    && !String.IsNullOrEmpty(tbPassword.Password)
+                    && !String.IsNullOrEmpty(tbPassword2.Password)
+                    && (cmb.SelectedItem != null)
+                    && (cmb2.SelectedItem != null)
+                    && (rb1.IsChecked == true || rb2.IsChecked == true))
 
-                        if (Regex.IsMatch(tbPassword.Password, @"(?=.[0-9]){2,}"))
+                    /// <summary>
+                    /// Проверка на пробелы
+                    /// </summary>
+                    /// 
+                    if (users.Where(x => x.Login.ToString() == tbLogin.Text).Count() == 0)
+                        if (!tbName.Text.Contains(" ")
+                         && !tbSurname.Text.Contains(" ")
+                         && !tbPatronymic.Text.Contains(" ")
+                         && !tbLogin.Text.Contains(" ")
+                         && !tbPassword.Password.Contains(" ")
+                         && !tbPassword2.Password.Contains(" "))
                         {
-                            if (Regex.IsMatch(tbPassword.Password, @"(?=.[A-Z]){1,}"))
+                            // два рбаочих варианта регулярки на две цифры
+                            //if (Regex.IsMatch(tbPassword.Password, @"(?=.[0-9]){2,}"))
+                            if (Regex.IsMatch(tbPassword.Password, @"(?=.*[0-9].*[0-9])"))
                             {
-                                if (Regex.IsMatch(tbPassword.Password, @"[a-z]+.*[a-z]+.*[a-z]"))
+                                if (Regex.IsMatch(tbPassword.Password, @"(?=.[A-Z]){1,}"))
                                 {
-                                    if (Regex.IsMatch(tbPassword.Password, @"\W"))
+                                    if (Regex.IsMatch(tbPassword.Password, @"[a-z]+.*[a-z]+.*[a-z]"))
                                     {
-
-                                        if (Regex.IsMatch(tbPassword.Password, @"(?=.*[^\w\s]).{8,}"))
+                                        if (Regex.IsMatch(tbPassword.Password, @"\W"))
                                         {
 
-                                            if (tbPassword.Password == tbPassword2.Password)
+                                            if (Regex.IsMatch(tbPassword.Password, @"(?=.*[^\w\s]).{8,}"))
                                             {
-                                                Users users = new Users()
+
+                                                if (tbPassword.Password.ToString() == tbPassword2.Password.ToString())
                                                 {
+                                                    Users users = new Users()
+                                                    {
 
-                                                    Name = tbName.Text,
-                                                    Surname = tbSurname.Text,
-                                                    Patronymic = tbPatronymic.Text,
-                                                    Login = tbLogin.Text,
-                                                    Password = tbPassword.Password.GetHashCode().ToString(),
-                                                    idCountry = cmb.SelectedIndex + 1,
-                                                    idCity = cmb2.SelectedIndex + 1,
-                                                    //Country = (Country)cmb.SelectedItem,
-                                                    //City = (City)cmb2.SelectedItem,
-
-
-                                                    IdGender = genderList,
-                                                    idRole = 2
-                                                };
+                                                        Name = tbName.Text,
+                                                        Surname = tbSurname.Text,
+                                                        Patronymic = tbPatronymic.Text,
+                                                        Login = tbLogin.Text,
+                                                        Password = tbPassword.Password.GetHashCode().ToString(),
+                                                        idCountry = cmb.SelectedIndex + 1,
+                                                        idCity = cmb2.SelectedIndex + 1,
+                                                        //Country = (Country)cmb.SelectedItem,
+                                                        //City = (City)cmb2.SelectedItem,
 
 
-                                                DataBase.tbE.Users.Add(users);
-                                                DataBase.tbE.SaveChanges();
-                                                MessageBox.Show("Успешная регистрация");
+                                                        IdGender = genderList,
+                                                        idRole = 2
+                                                    };
+
+
+                                                    DataBase.tbE.Users.Add(users);
+                                                    DataBase.tbE.SaveChanges();
+                                                    MessageBox.Show("Успешная регистрация");
+                                                    NavigationService.Navigate(new Autorization());
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Пароли не совпадают", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                                                }
+
+
+
                                             }
                                             else
                                             {
-                                                MessageBox.Show("Пароли не совпадают", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                                            }
+                                                MessageBox.Show("Пароль должен состоять не менее восьми символов", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
 
+
+
+                                            }
 
 
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Пароль должен состоять не менее восьми символов", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                                            MessageBox.Show("Пароль должен содержать не менее одного спец.символа", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
 
 
                                         }
 
 
+
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Пароль должен содержать не менее одного спец.символа", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                                        MessageBox.Show("В пароле должно находится не менее 3 строчных латинских символов", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
 
 
                                     }
-
-
 
                                 }
                                 else
                                 {
-
-                                    MessageBox.Show("В пароле должно находится не менее 3 строчных латинских символов", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                                    MessageBox.Show("В пароле должно находится не менее одного 1 заглавного символа", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
 
                                 }
-
                             }
+
                             else
                             {
-                                MessageBox.Show("В пароле должно находится не менее одного 1 заглавного символа", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                                MessageBox.Show("В пароле содержатся менее двух цифр", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
 
                             }
                         }
 
                         else
                         {
-                            MessageBox.Show("В пароле содержатся менее двух цифр", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                            MessageBox.Show("Проверьте, чтобы поля не содержали пробелы", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
-                    }
-
                     else
                     {
-                        MessageBox.Show("Проверьте, чтобы поля не содержали пробелы", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Такой логин уже существует", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
+
                 else
                 {
-                    MessageBox.Show("Такой логин уже существует", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Возможно не заполнено одно или несколько полей, а также не выбраны какие-то элементы", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
-            else
-            {
-                MessageBox.Show("Возможно не заполнено одно или несколько полей, а также не выбраны какие-то элементы", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-
+            catch
+            {
+                MessageBox.Show("Непредвиденная ошибка, попробуйте еще раз", "Возникла какая-то ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
 
         }
