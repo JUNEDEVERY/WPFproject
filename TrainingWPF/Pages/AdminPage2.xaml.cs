@@ -128,5 +128,10 @@ namespace TrainingWPF.Pages
                 }
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Order());
+        }
     }
 }
