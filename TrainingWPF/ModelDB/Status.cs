@@ -12,23 +12,18 @@ namespace TrainingWPF.ModelDB
     using System;
     using System.Collections.Generic;
     
-    public partial class Zakaz
+    public partial class Status
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Zakaz()
+        public Status()
         {
-            this.ZakazIzMenu = new HashSet<ZakazIzMenu>();
+            this.Zakaz = new HashSet<Zakaz>();
         }
     
-        public int idZakaz { get; set; }
         public int idStatus { get; set; }
-        public decimal summ { get; set; }
-        public Nullable<int> id_client { get; set; }
-        public System.DateTime datetime { get; set; }
+        public string statustype { get; set; }
     
-        public virtual Status Status { get; set; }
-        public virtual Users Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ZakazIzMenu> ZakazIzMenu { get; set; }
+        public virtual ICollection<Zakaz> Zakaz { get; set; }
     }
 }

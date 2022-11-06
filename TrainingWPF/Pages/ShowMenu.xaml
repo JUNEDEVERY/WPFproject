@@ -8,7 +8,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Background="White"
       Title="ShowMenu">
-
+    <Page.Resources>
+        <BitmapImage x:Key="defaultImage" UriSource="/Resources/nophoto.png"/>
+    </Page.Resources>
     <Grid>
         <ListView Name="lVMenu">
             <ListView.ItemsPanel>
@@ -21,8 +23,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding titile}"/>
-
+                        <TextBlock Text="{Binding idStatus}"/>
+                        <Image Width="100" Height="100" Source="{Binding Photo, TargetNullValue={StaticResource defaultImage}}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

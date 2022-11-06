@@ -102,10 +102,16 @@
     <Compile Include="ModelDB\Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelDB\Status.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModelDB\Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelDB\Zakaz.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDB\ZakazIzMenu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\FirstPage.xaml.cs">
@@ -204,6 +210,7 @@
     <Resource Include="Resources\MainBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\burger.jpg" />
     <Content Include="ModelDB\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -215,6 +222,7 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Resources\backgorund.png" />
+    <Resource Include="Resources\nophoto.png" />
     <Resource Include="Resources\background.png" />
     <Resource Include="Resources\1 половина.png" />
     <Resource Include="Resources\clipart2680273.png" />

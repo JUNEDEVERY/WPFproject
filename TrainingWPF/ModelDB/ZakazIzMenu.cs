@@ -12,20 +12,15 @@ namespace TrainingWPF.ModelDB
     using System;
     using System.Collections.Generic;
     
-    public partial class Napitok
+    public partial class ZakazIzMenu
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Napitok()
-        {
-            this.ZakazIzMenu = new HashSet<ZakazIzMenu>();
-        }
+        public int idZakazMenu { get; set; }
+        public Nullable<int> idMenu { get; set; }
+        public Nullable<int> idNapitok { get; set; }
+        public int idzakaz { get; set; }
     
-        public int idNapitok { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public double price { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ZakazIzMenu> ZakazIzMenu { get; set; }
+        public virtual Menu Menu { get; set; }
+        public virtual Napitok Napitok { get; set; }
+        public virtual Zakaz Zakaz { get; set; }
     }
 }

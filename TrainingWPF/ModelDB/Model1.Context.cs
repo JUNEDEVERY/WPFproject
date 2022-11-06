@@ -32,7 +32,9 @@ namespace TrainingWPF.ModelDB
         public virtual DbSet<Menu> Menu { get; set; }
         public virtual DbSet<Napitok> Napitok { get; set; }
         public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Zakaz> Zakaz { get; set; }
+        public virtual DbSet<ZakazIzMenu> ZakazIzMenu { get; set; }
     }
 }

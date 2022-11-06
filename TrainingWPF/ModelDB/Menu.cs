@@ -17,7 +17,7 @@ namespace TrainingWPF.ModelDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Menu()
         {
-            this.Zakaz = new HashSet<Zakaz>();
+            this.ZakazIzMenu = new HashSet<ZakazIzMenu>();
         }
     
         public int idMenu { get; set; }
@@ -25,11 +25,11 @@ namespace TrainingWPF.ModelDB
         public string description { get; set; }
         public double price { get; set; }
         public double weight { get; set; }
-        public int kod_ed_izmereniya { get; set; }
         public string cooking_time { get; set; }
         public string titile { get; set; }
+        public string Photo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Zakaz> Zakaz { get; set; }
+        public virtual ICollection<ZakazIzMenu> ZakazIzMenu { get; set; }
     }
 }

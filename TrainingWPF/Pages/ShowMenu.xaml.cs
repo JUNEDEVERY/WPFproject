@@ -23,7 +23,7 @@ namespace TrainingWPF.Pages
         public ShowMenu()
         {
             InitializeComponent();
-            lVMenu.ItemsSource = DataBase.tbE.Menu.ToList();
+            lVMenu.ItemsSource = DataBase.tbE.Zakaz.ToList();
 
         }
     }

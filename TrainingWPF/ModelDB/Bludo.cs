@@ -14,18 +14,9 @@ namespace TrainingWPF.ModelDB
     
     public partial class Bludo
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Bludo()
-        {
-            this.Zakaz = new HashSet<Zakaz>();
-        }
-    
         public int idBludo { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public double price { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Zakaz> Zakaz { get; set; }
     }
 }
