@@ -12,38 +12,45 @@
         <BitmapImage x:Key="defaultImage" UriSource="/Resources/nophoto.png"/>
     </Page.Resources>
     <Grid>
-        <ListView Name="lVMenu1">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel HorizontalAlignment="Center"></WrapPanel>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
+        <StackPanel Orientation="Vertical">
+            <ListView Name="lVMenu1">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Center"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
 
 
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Name="status" Text="{Binding Status.statustype}"/>
-
-                        <StackPanel Orientation='Horizontal'>
-                            <TextBlock  Text="{Binding User.Surname}"/>
-                            <TextBlock  Text="{Binding User.Name}"/>
-                            <TextBlock  Text="{Binding User.Patronymic}"/>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Background="{Binding backgroud}">
+                            <StackPanel Orientation='Horizontal'>
+                                <TextBlock Text="{Binding Users.Surname}"/>
+                                <TextBlock Text=" "/>
+                                <TextBlock Text="{Binding Users.Name}"/>
+                                <TextBlock Text=" "/>
+                                <TextBlock Text="{Binding Users.Patronymic}"/>
+                            </StackPanel>
+                            <StackPanel Orientation='Horizontal'>
+                                <TextBlock Name="Summ" Text="{Binding sum}"/>
+                                <TextBlock Text=" руб."/>
+                            </StackPanel>
+                            <TextBlock Name="datetime" Text="{Binding datetime,ConverterCulture=RU, StringFormat={}dd MMMM yyyy года}"/>
+                            <TextBlock Name="status" Text="{Binding Status.statustype}"/>
+                            <Button Name="SostavZakaz"  Click="SostavZakaz_Click" Content="Состав заказа" Tag="{Binding idZakaz}" Template="{StaticResource btnTemp}"/>
                         </StackPanel>
-                      
-                        <TextBlock Name="Summ" Text="{Binding Zakaz.summ}"/>
-                        <TextBlock Name="datetime" Text="{Binding datetime, StringFormat={}dd MMMM yyyy года}"/>
-                       
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Cумма всех заказов: "/>
+                <TextBlock Name="SumZakazov"/>
+                <TextBlock Text="    "/>
+                <TextBlock Text="Заказов в работе: "/>
+                <TextBlock Name="ZakazovRabota"/>
+            </StackPanel>
+            <Button Template="{StaticResource btnTemp}" Name="btngoBack" Click="btngoBack_Click" Content="Назад"></Button>
 
-
-
-
-        </ListView>
-
-
-
+        </StackPanel>
     </Grid>
 </Page>

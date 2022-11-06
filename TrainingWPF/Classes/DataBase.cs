@@ -7,9 +7,9 @@ using TrainingWPF.ModelDB;
 
 namespace TrainingWPF
 {
-    internal class DataBase
+    public class DataBase
     {
 
-        public static Entities22 tbE;
+        public static Entities22 tbE = new Entities22();
     }
 }

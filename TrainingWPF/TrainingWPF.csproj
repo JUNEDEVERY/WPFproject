@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\DataBase.cs" />
     <Compile Include="Classes\FrameWork.cs" />
+    <Compile Include="Classes\ZakazPartial.cs" />
     <Compile Include="ModelDB\Bludo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -165,10 +166,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\WindowSostavZakaza.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\Order.xaml.cs">
       <DependentUpon>Order.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WindowSostavZakaza.xaml.cs">
+      <DependentUpon>WindowSostavZakaza.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

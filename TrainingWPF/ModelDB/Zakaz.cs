@@ -22,7 +22,6 @@ namespace TrainingWPF.ModelDB
     
         public int idZakaz { get; set; }
         public int idStatus { get; set; }
-        public decimal summ { get; set; }
         public Nullable<int> id_client { get; set; }
         public System.DateTime datetime { get; set; }
     

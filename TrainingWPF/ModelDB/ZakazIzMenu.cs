@@ -18,6 +18,7 @@ namespace TrainingWPF.ModelDB
         public Nullable<int> idMenu { get; set; }
         public Nullable<int> idNapitok { get; set; }
         public int idzakaz { get; set; }
+        public Nullable<int> quantity { get; set; }
     
         public virtual Menu Menu { get; set; }
         public virtual Napitok Napitok { get; set; }

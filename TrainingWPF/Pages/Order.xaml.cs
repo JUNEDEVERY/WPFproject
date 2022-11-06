@@ -25,11 +25,35 @@ namespace TrainingWPF.Pages
         {
             InitializeComponent();
             DataBase.tbE = new Entities22();
-          
-            //lVMenu.ItemsSource = DataBase.tbE.Zakaz.ToList();
-            //lVMenu.ItemsSource = DataBase.tbE.Users.ToList();
-            
-           // lVMenu.ItemsSource = DataBase.tbE.Zakaz.tO(x => x.Status).ToList();
+            lVMenu1.ItemsSource = Zakaz.getZakaz();
+            double sum = 0;
+            int Stat = 0;
+            foreach (Zakaz zakaz in Zakaz.getZakaz())
+            {
+                sum += zakaz.sum;
+                if (zakaz.idStatus == 2 || zakaz.idStatus == 4)
+                {
+                    Stat++;
+                }
+            }
+            SumZakazov.Text = sum.ToString();
+            ZakazovRabota.Text = Stat.ToString();
+        }
+        private void SostavZakaz_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int id = Convert.ToInt32(btn.Tag);
+            List<ZakazIzMenu> zakazIzMenus = DataBase.tbE.ZakazIzMenu.Where(x => x.idzakaz == id).ToList();
+            Zakaz zakazs = Zakaz.getZakaz().FirstOrDefault(x => x.idZakaz == id);
+            WindowSostavZakaza win = new WindowSostavZakaza(zakazIzMenus, zakazs.Status.statustype,zakazs.sum.ToString());
+            if (win.ShowDialog() == true)
+            {
+            }
+        }
+
+        private void btngoBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AdminPage2());
         }
     }
 }
