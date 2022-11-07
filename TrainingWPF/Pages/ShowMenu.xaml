@@ -7,12 +7,12 @@ xmlns:local="clr-namespace:TrainingWPF.Pages"
 mc:Ignorable="d"
 d:DesignHeight="450" d:DesignWidth="800"
 Background="White"
-Title="ShowMenu">
+Title="ShowMenu" >
     <Page.Resources>
         <BitmapImage x:Key="defaultImage" UriSource="/Resources/nophoto.png"/>
     </Page.Resources>
-    <Grid>
-        <ListView Name="lVMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+    <Grid >
+        <ListView Name="lVMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#f5d2aa">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center" />

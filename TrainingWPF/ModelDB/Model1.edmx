@@ -42,7 +42,7 @@
           <Property Name="idMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="quantity" Type="int" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
           <Property Name="weight" Type="float" Nullable="false" />
           <Property Name="cooking_time" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="titile" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -103,7 +103,7 @@
           <Property Name="idMenu" Type="int" />
           <Property Name="idNapitok" Type="int" />
           <Property Name="idzakaz" Type="int" Nullable="false" />
-          <Property Name="quantity" Type="int" />
+          <Property Name="quantity" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Users_City">
           <End Role="City" Type="Self.City" Multiplicity="1" />
@@ -355,7 +355,7 @@
           <Property Name="idMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="quantity" Type="Int32" Nullable="false" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="weight" Type="Double" Nullable="false" />
           <Property Name="cooking_time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="titile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -428,7 +428,7 @@
           <Property Name="idMenu" Type="Int32" />
           <Property Name="idNapitok" Type="Int32" />
           <Property Name="idzakaz" Type="Int32" Nullable="false" />
-          <Property Name="quantity" Type="Int32" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Menu" Relationship="Model.FK_ZakazIzMenu_Menu" FromRole="ZakazIzMenu" ToRole="Menu" />
           <NavigationProperty Name="Napitok" Relationship="Model.FK_ZakazIzMenu_Napitok" FromRole="ZakazIzMenu" ToRole="Napitok" />
           <NavigationProperty Name="Zakaz" Relationship="Model.FK_ZakazIzMenu_Zakaz" FromRole="ZakazIzMenu" ToRole="Zakaz" />

@@ -23,7 +23,7 @@ namespace TrainingWPF.ModelDB
         public int idMenu { get; set; }
         public int quantity { get; set; }
         public string description { get; set; }
-        public double price { get; set; }
+        public decimal price { get; set; }
         public double weight { get; set; }
         public string cooking_time { get; set; }
         public string titile { get; set; }

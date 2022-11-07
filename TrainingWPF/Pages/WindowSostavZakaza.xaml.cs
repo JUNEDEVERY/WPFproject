@@ -26,6 +26,7 @@ namespace TrainingWPF.Pages
             lVMenu.ItemsSource = zakazIzMenu;
             SumZakaz.Text = SumZaka;
             StatusZakaz.Text = Status;
+
         }
     }
 }

@@ -46,12 +46,6 @@ namespace TrainingWPF
 
 
         }
-
-        private void cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
 
@@ -261,6 +255,11 @@ namespace TrainingWPF
                 tbPasswordTB1.Visibility = Visibility.Collapsed;
                 tbPassword2.Visibility = Visibility.Visible;
             }
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Autorization());
         }
     }
 }

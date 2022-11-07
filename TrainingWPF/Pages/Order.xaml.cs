@@ -31,7 +31,7 @@ namespace TrainingWPF.Pages
             foreach (Zakaz zakaz in Zakaz.getZakaz())
             {
                 sum += zakaz.sum;
-                if (zakaz.idStatus == 2 || zakaz.idStatus == 4)
+                if (zakaz.idStatus == 4)
                 {
                     Stat++;
                 }

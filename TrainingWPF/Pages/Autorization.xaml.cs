@@ -66,5 +66,10 @@ namespace TrainingWPF
         {
             NavigationService.Navigate(new FirstPage());
         }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Registration());
+        }
     }
 }

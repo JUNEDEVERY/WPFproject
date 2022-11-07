@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TrainingWPF.Pages"
         mc:Ignorable="d"
         Title="Состав заказа" Height="300" Width="300"  WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid Background="#f5d2aa">
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Cумма заказа: "/>
