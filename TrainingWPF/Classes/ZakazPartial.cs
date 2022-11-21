@@ -35,6 +35,10 @@ namespace TrainingWPF.ModelDB
                 {
                     zakaz1.backgroud = "#FEF790";
                 }
+                if(zakaz1.idStatus == 2)
+                {
+                    zakaz1.backgroud = "#fff700";
+                }
             }
             return zakaz;
         }

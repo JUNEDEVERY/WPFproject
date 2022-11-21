@@ -50,7 +50,7 @@ namespace TrainingWPF
                 else
                 {
                     MessageBox.Show($"Привет, {users.Login}!", "Успешная авторизация", MessageBoxButton.OK, MessageBoxImage.Information); ;
-                    NavigationService.Navigate(new ShowMenu());
+                    NavigationService.Navigate(new ShowMenu(users.id_client));
                 }
 
             }

@@ -25,6 +25,11 @@
                     
                 </TextBox>
             </GroupBox>
+            <GroupBox>
+                <ComboBox Name="STATUS">
+                    
+                </ComboBox>
+            </GroupBox>
         </StackPanel>
         <StackPanel Grid.Row="1">
             <ListView Name="lVMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="100">
@@ -41,7 +46,7 @@
             <Button x:Name="del" Content="Удалить" HorizontalAlignment="Center" Margin="0 125 0 0" Click="del_Click"/>
         </StackPanel>
         <StackPanel Grid.Row="2">
-            <Button Height="100" Content="Оформить заказ" Click="Button_Click">
+            <Button Height="100" Content="Изменить" Click="Button_Click">
                 
             </Button>
         </StackPanel>

@@ -23,10 +23,20 @@ namespace TrainingWPF.Pages
     /// </summary>
     public partial class ShowMenu : Page
     {
-        public ShowMenu()
+        List<MyOrder> list = new List<MyOrder>();
+        int u_id;
+        public struct MyOrder
+        {
+            public int k;
+            public ModelDB.Menu menus;
+        }
+        public ShowMenu(int u_id)
         {
             InitializeComponent();
             lVMenu.ItemsSource = DataBase.tbE.Menu.ToList();
+            this.u_id = u_id;
+
+
         }
 
         private void addMenu_Click(object sender, RoutedEventArgs e)
@@ -34,7 +44,94 @@ namespace TrainingWPF.Pages
             Button btn = (Button)sender;
             int id = Convert.ToInt32(btn.Tag);
             ModelDB.Menu menu = DataBase.tbE.Menu.FirstOrDefault(x => x.idMenu == id);
-            MessageBox.Show("Вы выбрали \"" + menu.titile + "\", но я еще не реализовал корзину(");
+            if (list.Where(x => x.menus.idMenu == id).Count() == 0)
+            {
+                MyOrder myOrder = new MyOrder();
+                myOrder.menus = menu;
+                myOrder.k = 1;
+                list.Add(myOrder);
+
+            }
+            else
+            {
+                MyOrder order = list.FirstOrDefault(x => x.menus.idMenu == id);
+                order.k++;
+                list.Remove(list.FirstOrDefault(x => x.menus.idMenu == id));
+                list.Add(order);
+            }
+            Zakaz.Items.Clear();
+            foreach (MyOrder myOrder in list)
+            {
+                Zakaz.Items.Add(myOrder.menus.titile + " в количестве " + myOrder.k + " шт.");
+            }
+        }
+
+        private void AddOrder_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Zakaz zakaz = new Zakaz()
+                {
+                    idStatus = 2,
+                    id_client = u_id,
+                    datetime = DateTime.Now
+                };
+
+                DataBase.tbE.Zakaz.Add(zakaz);
+                foreach (MyOrder myOrder in list)
+                {
+                    ZakazIzMenu zakazIzMenu = new ZakazIzMenu()
+                    {
+                        idMenu = myOrder.menus.idMenu,
+                        idNapitok = 1,
+                        idzakaz = zakaz.idZakaz,
+                        quantity = myOrder.k
+                    };
+                    DataBase.tbE.ZakazIzMenu.Add(zakazIzMenu);
+                }
+                DataBase.tbE.SaveChanges();
+                MessageBox.Show("Ваш заказ успешно оформлен. ");
+
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так", "Минутку....", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+       
+           
+        }
+
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+
+        }
+
+        private void DeletePart_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (Zakaz.SelectedItems.Count != 0)
+                {
+
+                    string str = Zakaz.SelectedValue.ToString().Substring(0, Zakaz.SelectedValue.ToString().IndexOf(" в количестве"));
+
+                    list.Remove(list.FirstOrDefault(x => x.menus.titile == str));
+                    Zakaz.Items.Clear();
+                    foreach (MyOrder myOrder in list)
+                    {
+                        Zakaz.Items.Add(myOrder.menus.titile + " в количестве " + myOrder.k + " шт.");
+                    }
+                }
+                else
+                    MessageBox.Show("Вы не выбрали элемент для удаления", "Возникла ошибка при удалении товара из корзины", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+            catch
+            {
+                MessageBox.Show(" Вы не выбрали элемент для удаления", "Возникла ошибка при удалении товара из корзины", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
     }
 

@@ -45,7 +45,7 @@ namespace TrainingWPF.Pages
             int id = Convert.ToInt32(btn.Tag);
             List<ZakazIzMenu> zakazIzMenus = DataBase.tbE.ZakazIzMenu.Where(x => x.idzakaz == id).ToList();
             Zakaz zakazs = Zakaz.getZakaz().FirstOrDefault(x => x.idZakaz == id);
-            WindowSostavZakaza win = new WindowSostavZakaza(zakazIzMenus, zakazs.Status.statustype,zakazs.sum.ToString());
+            WindowSostavZakaza win = new WindowSostavZakaza(zakazIzMenus, zakazs.Status.statustype, zakazs.sum.ToString());
             if (win.ShowDialog() == true)
             {
             }
@@ -56,9 +56,33 @@ namespace TrainingWPF.Pages
             NavigationService.Navigate(new AdminPage2());
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+
+        private void Удалить_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddOrder());
+          
+            Button btn = (Button)sender;
+            int id = Convert.ToInt32(btn.Tag);
+
+            List<ZakazIzMenu> zakazIzMenus = DataBase.tbE.ZakazIzMenu.Where((x) => x.idzakaz == id).ToList();
+            foreach (ZakazIzMenu zakazIzMenu in zakazIzMenus)
+            {
+                DataBase.tbE.ZakazIzMenu.Remove(zakazIzMenu);
+                
+            }
+            Zakaz zakaz1 = DataBase.tbE.Zakaz.FirstOrDefault(x => x.idZakaz == id);
+            DataBase.tbE.Zakaz.Remove(zakaz1);
+            
+            DataBase.tbE.SaveChanges();
+            lVMenu1.ItemsSource = Zakaz.getZakaz();
+            
+        }
+
+        private void Редактировать_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int id = Convert.ToInt32(btn.Tag);
+            Zakaz zakaz = DataBase.tbE.Zakaz.FirstOrDefault(x => x.idZakaz == id);
+            NavigationService.Navigate(new AddOrder(zakaz.idZakaz));
         }
     }
 }
