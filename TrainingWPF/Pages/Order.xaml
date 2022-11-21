@@ -79,11 +79,12 @@
             </StackPanel>
             <StackPanel>
             </StackPanel>
-            <StackPanel HorizontalAlignment="Right" Margin="0 0 15 0">
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" >
 
-                <Button Template="{StaticResource btnTemp}" Name="btngoBack" Click="btngoBack_Click" Content="Назад" />
-
+                <Button Margin="0 0 15 0" Template="{StaticResource btnTemp}" Name="btnAdd" Click="btnAdd_Click" Content="Добавить" />
+                <Button Template="{StaticResource btnTemp}" x:Name="btngoBack" Click="btngoBack_Click" Content="Назад" />
             </StackPanel>
+           
         </StackPanel>
 
     </Grid>

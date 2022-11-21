@@ -55,5 +55,10 @@ namespace TrainingWPF.Pages
         {
             NavigationService.Navigate(new AdminPage2());
         }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddOrder());
+        }
     }
 }
