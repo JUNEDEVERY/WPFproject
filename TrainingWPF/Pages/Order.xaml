@@ -79,7 +79,7 @@
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" >
 
            
-                <Button Template="{StaticResource btnTemp}" x:Name="btngoBack" Click="btngoBack_Click" Content="Назад" />
+                <Button Template="{StaticResource btnTemp}" Margin="0 0 15 0" x:Name="btngoBack" Click="btngoBack_Click" Content="Назад" />
             </StackPanel>
            
         </StackPanel>
