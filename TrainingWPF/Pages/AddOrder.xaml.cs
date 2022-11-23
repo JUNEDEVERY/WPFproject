@@ -14,14 +14,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TrainingWPF.ModelDB;
-using static TrainingWPF.Pages.AddOrder;
-using static TrainingWPF.Pages.ShowMenu;
+
 
 namespace TrainingWPF.Pages
 {
     /// <summary>
     /// Логика взаимодействия для AddOrder.xaml
-    /// </summary>
+    /// </summary>Grid.Row="1"
     public partial class AddOrder : Page
     {
 
@@ -93,15 +92,20 @@ namespace TrainingWPF.Pages
                 {
                     MyOrder myOrder = new MyOrder();
                     myOrder.menus = DataBase.tbE.Menu.FirstOrDefault(x => x.titile == cmbBludo.Text);
-                    myOrder.k = Convert.ToInt32(tb1.Text);
+
+                    myOrder.k += Convert.ToInt32(tb1.Text);
+                    //myOrder.k = 1;
                     list.Add(myOrder);
 
                 }
                 else
                 {
                     MyOrder order = list.FirstOrDefault(x => x.menus.titile == cmbBludo.Text);
-                    order.k = Convert.ToInt32(tb1.Text);
+                    order.k += Convert.ToInt32(tb1.Text);
+                    //order.k++;
+                  
                     list.Remove(list.FirstOrDefault(x => x.menus.titile == cmbBludo.Text));
+                    
                     list.Add(order);
                 }
                 lVMenu.Items.Clear();
@@ -186,6 +190,11 @@ namespace TrainingWPF.Pages
             {
                 MessageBox.Show("Что-то пошло не так", "Минутку....", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }
